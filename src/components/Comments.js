@@ -5,7 +5,12 @@ class Comments extends Component {
     onDelete = () => {
         // console.log("comments on delete");
         this.props.onDelete(this.props.comment.id);
-    }
+    };
+
+    onEdit = () => {
+        //  console.log("comments on edit");
+         this.props.onEdit(this.props.comment);
+    };
 
     render() {
 
@@ -17,7 +22,7 @@ class Comments extends Component {
             <td> {title} </td>
             <td> {content} </td>
             <td>
-                <button className="mini ui blue button">Edit</button>
+                <button className="mini ui blue button" onClick={this.onEdit}  >Edit</button>
                 <button className="mini ui red button" onClick={this.onDelete} >Delete</button>
             </td>
         </tr>

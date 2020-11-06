@@ -8,6 +8,11 @@ class CommentList extends Component {
         this.props.onDelete(id);
     }
 
+    onEdit = data => {
+        // console.log("comment list", id);
+        this.props.onEdit(data);
+    }
+
 render(){
 
     const comments = this.props.comments;
@@ -28,7 +33,9 @@ render(){
                   {
                       comments.map( comment =>{
                         return(
-                            <Comment comment={comment} key={comment.id} onDelete={this.onDelete} />
+                            <Comment comment={comment} key={comment.id} 
+                            onDelete={this.onDelete}
+                            onEdit={this.onEdit} />
                         )
                       })
                   } 

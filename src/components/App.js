@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import MyForm from "./MyForm";
-import Loader from "./Loader";
+// import Loader from "./Loader";
 import CommentList from "./CommentList";
 import "./app.css";
 
@@ -42,6 +42,7 @@ class App extends Component {
 
 state = {
     comments: [],
+    comment: {},
     loader: false,
     url: "http://localhost:8000/api/comment",
 }
@@ -74,6 +75,11 @@ componentDidMount() {
 onDelete = id => {
     // console.log("app", id);
     this.deleteComment(id);
+}
+
+onEdit = data => {
+    // console.log("app", data);
+    this.setState({comment: data});
 }
 
 render(){
@@ -114,9 +120,11 @@ render(){
                 </div>
             </div>
             <div className="ui main container">
-                <MyForm/>
+                <MyForm comment={this.state.comment} />
 
-                <CommentList comments={this.state.comments} onDelete={this.onDelete} />
+                <CommentList comments={this.state.comments} 
+                onDelete={this.onDelete} 
+                onEdit={this.onEdit} />
             </div>
 
         </div>
